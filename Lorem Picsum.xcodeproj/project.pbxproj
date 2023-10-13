@@ -11,6 +11,7 @@
 		4F0904442AD9BF4600EE2C9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0904432AD9BF4600EE2C9B /* ContentView.swift */; };
 		4F0904462AD9BF4900EE2C9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0904452AD9BF4900EE2C9B /* Assets.xcassets */; };
 		4F0904492AD9BF4900EE2C9B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F0904482AD9BF4900EE2C9B /* Preview Assets.xcassets */; };
+		4F0904502AD9BFBC00EE2C9B /* RandyRandoPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F09044F2AD9BFBC00EE2C9B /* RandyRandoPic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4F0904432AD9BF4600EE2C9B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4F0904452AD9BF4900EE2C9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F0904482AD9BF4900EE2C9B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4F09044F2AD9BFBC00EE2C9B /* RandyRandoPic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandyRandoPic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				4F0904412AD9BF4600EE2C9B /* Lorem_PicsumApp.swift */,
+				4F09044F2AD9BFBC00EE2C9B /* RandyRandoPic.swift */,
 				4F0904432AD9BF4600EE2C9B /* ContentView.swift */,
 				4F0904452AD9BF4900EE2C9B /* Assets.xcassets */,
 				4F0904472AD9BF4900EE2C9B /* Preview Content */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0904502AD9BFBC00EE2C9B /* RandyRandoPic.swift in Sources */,
 				4F0904442AD9BF4600EE2C9B /* ContentView.swift in Sources */,
 				4F0904422AD9BF4600EE2C9B /* Lorem_PicsumApp.swift in Sources */,
 			);
