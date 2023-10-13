@@ -1,0 +1,17 @@
+//
+//  Lorem_PicsumApp.swift
+//  Lorem Picsum
+//
+//  Created by Vito Borghi on 13/10/2023.
+//
+
+import SwiftUI
+
+@main
+struct Lorem_PicsumApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
