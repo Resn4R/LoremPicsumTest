@@ -11,20 +11,53 @@ struct ContentView: View {
     @Environment (\.modelContext) var modelContext
     @Query var gallery: [RandyRandyPic]
     
-    private var imageURL: URL = URL(string: "")!
+    private let imageModifiers = ["none", "grayscale","blur"]
+    @State public var imageModifier: String = "" {
+    willSet {
+        if newValue == "none" {
+            imageModifier = ""
+        }
+    }
+}
+    //private var imageURL: URL = URL(string: "")!
     @State private var id = Int.random(in: 0...1000)
     private var downloadedImage: Data? = nil
     
     var body: some View {
         NavigationStack{
             VStack{
-                imageContent(id: id)
+                
+                AsyncImage(url: URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)"), scale: 1) { phase in
+                    switch phase {
+                        case .empty: ProgressView()
+                        case .success(let loadedImage): loadedImage
+                        case .failure: Text("Failed to load the image. Try Again.")
+                        @unknown default: EmptyView()
+                    }
+                }
+                Picker("image modifier", selection: $imageModifier) {
+                    ForEach(imageModifiers, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.palette)
                 .padding()
 
                 Group {
                     Button("Save to album"){
                         Task {
-                            //await downloadImage(url: imageURL, context: modelContext)
+                            let url = URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)")
+                            do {
+                                let (data, _) = try await URLSession.shared.data(from: url!)
+                                
+                                let pic = RandyRandyPic(image: data)
+                                modelContext.insert(pic)
+                                try? modelContext.save()
+                            }
+                            catch {
+                                print("invalid data.")
+                            }
+                            print("image downloaded and saved successfully.")
                         }
                     }
                     .padding()
@@ -72,37 +105,7 @@ func downloadImage(url: URL, context: ModelContext) async {
 //    }.resume()
 //}
 
-struct imageContent: View {
-    
-    private let imageModifiers = ["none", "grayscale","blur"]
-    @State public var imageModifier: String = "" {
-    willSet {
-        if newValue == "none" {
-            imageModifier = ""
-        }
-    }
-}
-    @State var id: Int
 
-    
-    var body: some View {
-        AsyncImage(url: URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)"), scale: 1) { phase in
-            switch phase {
-                case .empty: ProgressView()
-                case .success(let loadedImage): loadedImage
-                case .failure: Text("Failed to load the image. Try Again.")
-                @unknown default: EmptyView()
-            }
-        }
-        Picker("image modifier", selection: $imageModifier) {
-            ForEach(imageModifiers, id: \.self) {
-                Text($0)
-            }
-        }
-        .pickerStyle(.palette)
-    }
+#Preview {
+    ContentView()
 }
-
-//#Preview {
-//    ContentView()
-//}

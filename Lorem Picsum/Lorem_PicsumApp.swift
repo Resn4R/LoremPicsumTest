@@ -14,6 +14,6 @@ struct Lorem_PicsumApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Data.self)
+        .modelContainer(for: RandyRandyPic.self)
     }
 }
