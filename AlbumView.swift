@@ -18,6 +18,7 @@ struct AlbumView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
+                        .padding(.horizontal, 5)
                 }
             }
         })
