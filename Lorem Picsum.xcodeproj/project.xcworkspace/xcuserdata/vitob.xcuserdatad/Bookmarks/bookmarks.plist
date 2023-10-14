@@ -13,15 +13,15 @@
 						<key>location-parameters</key>
 						<dict>
 							<key>EndingColumnNumber</key>
-							<string>20</string>
+							<string>0</string>
 							<key>EndingLineNumber</key>
-							<string>46</string>
+							<string>45</string>
 							<key>StartingColumnNumber</key>
 							<string>0</string>
 							<key>StartingLineNumber</key>
-							<string>46</string>
+							<string>44</string>
 							<key>Timestamp</key>
-							<string>718932213.76577</string>
+							<string>719011779.0205359</string>
 						</dict>
 						<key>rebasable-url</key>
 						<dict>
@@ -34,18 +34,21 @@
 							</dict>
 						</dict>
 					</dict>
+					<key>is-complete</key>
+					<true/>
 					<key>text-context</key>
 					<dict>
 						<key>focused</key>
-						<string>                    </string>
+						<string>                    Button("Save to album"){
+</string>
 						<key>leading</key>
 						<string>
                 Group {
 </string>
 						<key>trailing</key>
-						<string>Button("Save to album"){
-                        Task {
-                            let url = URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)")
+						<string>                        Task {
+                            guard let url = URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)") 
+                            else { fatalError() }
 </string>
 					</dict>
 					<key>title</key>
@@ -59,15 +62,15 @@
 						<key>location-parameters</key>
 						<dict>
 							<key>EndingColumnNumber</key>
-							<string>20</string>
+							<string>0</string>
 							<key>EndingLineNumber</key>
-							<string>64</string>
+							<string>65</string>
 							<key>StartingColumnNumber</key>
 							<string>0</string>
 							<key>StartingLineNumber</key>
 							<string>64</string>
 							<key>Timestamp</key>
-							<string>718932230.0867651</string>
+							<string>719011779.020151</string>
 						</dict>
 						<key>rebasable-url</key>
 						<dict>
@@ -80,18 +83,21 @@
 							</dict>
 						</dict>
 					</dict>
+					<key>is-complete</key>
+					<true/>
 					<key>text-context</key>
 					<dict>
 						<key>focused</key>
-						<string>                    </string>
+						<string>                    NavigationLink("View Album", destination: AlbumView())
+</string>
 						<key>leading</key>
 						<string>                    .padding()
                     
 </string>
 						<key>trailing</key>
-						<string>Button ("View Album"){
-                        //action
-                    }
+						<string>                    .padding()
+                    
+                    Button("New Pic") {
 </string>
 					</dict>
 					<key>title</key>

@@ -19,14 +19,12 @@ struct ContentView: View {
         }
     }
 }
-    //private var imageURL: URL = URL(string: "")!
     @State private var id = Int.random(in: 0...1000)
     private var downloadedImage: Data? = nil
     
     var body: some View {
         NavigationStack{
             VStack{
-                
                 AsyncImage(url: URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)"), scale: 1) { phase in
                     switch phase {
                         case .empty: ProgressView()
@@ -46,9 +44,11 @@ struct ContentView: View {
                 Group {
                     Button("Save to album"){
                         Task {
-                            let url = URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)")
+                            guard let url = URL(string: "https://picsum.photos/id/\(id)/400/300/?\(imageModifier)") 
+                            else { fatalError() }
+                            
                             do {
-                                let (data, _) = try await URLSession.shared.data(from: url!)
+                                let (data, _) = try await URLSession.shared.data(from: url)
                                 
                                 let pic = RandyRandyPic(image: data)
                                 modelContext.insert(pic)
@@ -62,9 +62,7 @@ struct ContentView: View {
                     }
                     .padding()
                     
-                    Button ("View Album"){
-                        //action
-                    }
+                    NavigationLink("View Album", destination: AlbumView())
                     .padding()
                     
                     Button("New Pic") {
@@ -72,40 +70,12 @@ struct ContentView: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
-
-                    
             }
         }
     }
 }
 
-func downloadImage(url: URL, context: ModelContext) async {
-    do {
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        let pic = RandyRandyPic(image: data)
-        context.insert(pic)
-        try? context.save()
-    }
-    catch {
-        print("invalid data.")
-    }
-    print("image downloaded and saved successfully.")
-}
-
-//
-//func downloadImage(url: URL, completion: @escaping (Data?) -> Void) {
-//    URLSession.shared.dataTask(with: url) { data, _, error in
-//        if let error = error {
-//            print("Error downloading image: \(error.localizedDescription)")
-//            completion(nil)
-//            return
-//        }
-//        completion(data)
-//    }.resume()
-//}
-
-
 #Preview {
     ContentView()
+        .modelContainer(for: RandyRandyPic.self)
 }

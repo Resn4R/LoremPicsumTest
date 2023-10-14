@@ -9,7 +9,7 @@ import Foundation
 
 @Model
 class RandyRandyPic {
-    var image: Data
+    @Attribute (.externalStorage) var image: Data
     
     init(image: Data) {
         self.image = image
